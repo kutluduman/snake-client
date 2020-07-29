@@ -18,6 +18,7 @@ const connect = function() {
     conn.write(" Name: JOK");
   });
 
+
   // event handle for receiving incoming message from server
   conn.on('data', function(message) {
     console.log(message);
