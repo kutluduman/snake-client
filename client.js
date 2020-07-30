@@ -1,4 +1,6 @@
 const net = require('net');
+const {NAME, SUCCESS_CONNECT, IP, PORT} = require('./constants');
+let {direction} = require('./input');
 
 /**
  * Establishes connection with the game server
@@ -7,26 +9,29 @@ const net = require('net');
 const connect = function() {
 
   const conn = net.createConnection({
-    port : 50541 ,
-    host : '135.23.222.131'
+    port : PORT ,
+    host : IP
   });
+
+  // interpret incoming data as text
+  conn.setEncoding('utf8');
 
   // event hand for successfully connection
   conn.on('connect', function () {
-    console.log('Successfully connected to game server');
+    console.log(SUCCESS_CONNECT);
+    
+  });
+
+  conn.on('connect', () => {
     // sending the name to the server as JOK
-    conn.write(" Name: JOK");
+    conn.write(` Name: ${NAME}`);
   });
 
 
   // event handle for receiving incoming message from server
   conn.on('data', function(message) {
-    console.log(message);
+    console.log('Message from server ', message);
   });
-
-
-  // interpret incoming data as text
-  conn.setEncoding('utf8');
 
   return conn;
 

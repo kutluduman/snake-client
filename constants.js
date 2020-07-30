@@ -10,6 +10,9 @@ const MOVE_UP_KEY = 'w';
 const MOVE_DOWN_KEY = 's';
 const MOVE_LEFT_KEY = 'a';
 const MOVE_RIGHT_KEY = 'd';
+const SAY_HELL0 = 'h';
+const ASK_HOW_ARE_YOU = 'j';
+const HEY_HEY = 'k';
 
 // connection Messages
 const SUCCESS_CONNECT = 'Successfully connected to the game server';
